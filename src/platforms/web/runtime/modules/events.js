@@ -45,6 +45,7 @@ function add (
   capture: boolean,
   passive: boolean
 ) {
+  if (!handler) return  
   handler = withMacroTask(handler)
   if (once) handler = createOnceHandler(handler, event, capture)
   target.addEventListener(
@@ -62,6 +63,7 @@ function remove (
   capture: boolean,
   _target?: HTMLElement
 ) {
+  if (!handler) return  
   (_target || target).removeEventListener(
     event,
     handler._withTask || handler,
